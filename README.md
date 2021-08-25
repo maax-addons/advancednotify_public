@@ -11,5 +11,4 @@ Notification
 
 > AdvancedNotify:Notify(color, header_text , content_text)
 
-| Tables        |
 | ------------- |
