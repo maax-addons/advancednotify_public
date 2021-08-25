@@ -17,7 +17,7 @@
 
 util.AddNetworkString("AdvancedNotify.Notify")
 
-function AdvancedNotify:Notify(ply, type, header, text)
+function AdvancedNotify:Broadcast( ply , main_color , header_text , main_text )
     net.Start("AdvancedNotify.Notify")
     net.WriteString(type or Color(255,0,0))
     net.WriteString(header or "AdvancedNotify")
