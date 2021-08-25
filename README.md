@@ -11,5 +11,7 @@ Notification
 
 > AdvancedNotify:Notify(color, header_text , content_text)
 
+```javascript
 var s = "JavaScript syntax highlighting";
-alert(s)
+alert(s);
+```
