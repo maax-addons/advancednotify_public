@@ -1,14 +1,22 @@
-surface.CreateFont("DigitalRP.HUDPopUPText", {
-	font = "Default",
-	size = ScreenScale(11.4),
-	width = 150
-})
+////////////////////////////////////////
+//       Advanced Notifications       //
+//          Coded by: Maax            //
+//                                    //
+//      Version: v1.0 (GitHub)        //
+//                                    //
+//      You are not permitted to      //
+//        reupload this Script!       //
+//                                    //
+////////////////////////////////////////
 
-function AdvancedNotify:Broadcast(color, header_text, main_text)
-	
-    local value_color = color or Color(255,0,0)
-    local value_header = header_text or ""
-    local value_text = main_text or ""
+--[[
+  
+  File: cl_broadcast.lua
+
+]]--
+
+
+function AdvancedNotify:Broadcast(type, header, text_)
 
     self = vgui.Create("DNotify")
     self:SetPos(ScrW()/4.0, ScrH() /6.1)
@@ -22,8 +30,8 @@ function AdvancedNotify:Broadcast(color, header_text, main_text)
           draw.RoundedBoxEx(9, 0, 0, w,h, DigitalRP:GetColor("greyalpha"), false, false, true, true)
           draw.RoundedBoxEx(0, 0, 0, w,7, type, false, false, true, true)
 
-          draw.DrawText(header, "mlib.close_btn", self:GetWide() / 2, 10, type, TEXT_ALIGN_CENTER)
-          draw.DrawText( text_, "DigitalRP.HUDPopUPText", self:GetWide() / 2, self:GetTall() / 1.7, DigitalRP:GetColor("white"), TEXT_ALIGN_CENTER)
+          draw.DrawText(header, "AdvancedNotify.PopUPHead", self:GetWide() / 2, 10, type, TEXT_ALIGN_CENTER)
+          draw.DrawText( text_, "AdvancedNotify.PopUPText", self:GetWide() / 2, self:GetTall() / 1.7, DigitalRP:GetColor("white"), TEXT_ALIGN_CENTER)
     end
 
     self:AddItem(bg)
@@ -31,6 +39,8 @@ function AdvancedNotify:Broadcast(color, header_text, main_text)
     AdvancedNotify:BroadcastPrint(type, header, text_)
 end
 
-
+net.Receive("AdvancedNotify.Broadcast", function(len)
+    AdvancedNotify:Broadcast(net.ReadString(), net.ReadString(), net.ReadString())
+end)
 
 
