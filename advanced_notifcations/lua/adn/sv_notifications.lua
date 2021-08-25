@@ -25,10 +25,6 @@ function AdvancedNotify:Broadcast( ply , main_color , header_text , main_text )
     net.Send(ply)
 end
 
-concommand.Add("hudpopup", function()
-  AdvancedNotify:Notify(Color(255,0,0),  "Advanced Notifications", "Some Text...")
-end)
-
 
 
 
