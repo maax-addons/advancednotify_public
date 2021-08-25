@@ -7,9 +7,7 @@ Link: https://discord.gg/TwqNCWkYUM
 
 ## Developer Knowledgebase
 
-Notification
-
-> AdvancedNotify:Notify(color, header_text , content_text)
+###Notification
 
 ```javascript
   AdvancedNotify:Notify(color, header_text , content_text)
