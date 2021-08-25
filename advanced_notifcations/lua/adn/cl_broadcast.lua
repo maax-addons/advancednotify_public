@@ -16,7 +16,11 @@
 ]]--
 
 
-function AdvancedNotify:Broadcast(type, header, text_)
+function AdvancedNotify:Broadcast( main_color, header_text, main_text)
+     
+    local main_color = color or Color(255,0,0)
+    local header = header_text or ""
+    local text = main_text or ""
 
     self = vgui.Create("DNotify")
     self:SetPos(ScrW()/4.0, ScrH() /6.1)
@@ -27,11 +31,11 @@ function AdvancedNotify:Broadcast(type, header, text_)
     local bg = vgui.Create("DPanel", self)
     bg:Dock(FILL)
     bg.Paint = function(self,w,h)
-          draw.RoundedBoxEx(9, 0, 0, w,h, DigitalRP:GetColor("greyalpha"), false, false, true, true)
-          draw.RoundedBoxEx(0, 0, 0, w,7, type, false, false, true, true)
+          draw.RoundedBoxEx(9, 0, 0, w,h, Color(24, 24, 24,245), false, false, true, true)
+          draw.RoundedBoxEx(0, 0, 0, w,7, main_color, false, false, true, true)
 
-          draw.DrawText(header, "AdvancedNotify.PopUPHead", self:GetWide() / 2, 10, type, TEXT_ALIGN_CENTER)
-          draw.DrawText( text_, "AdvancedNotify.PopUPText", self:GetWide() / 2, self:GetTall() / 1.7, DigitalRP:GetColor("white"), TEXT_ALIGN_CENTER)
+          draw.DrawText(header, "AdvancedNotify.PopUPHead", self:GetWide() / 2, 10, main_color, TEXT_ALIGN_CENTER)
+          draw.DrawText(text, "AdvancedNotify.PopUPText", self:GetWide() / 2, self:GetTall() / 1.7, Color(255,255,255) , TEXT_ALIGN_CENTER)
     end
 
     self:AddItem(bg)
