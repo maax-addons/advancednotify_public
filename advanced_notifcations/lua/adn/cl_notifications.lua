@@ -14,11 +14,12 @@
 
 ]]--
 
-function AdvancedNotify:Notify(type, header, text_)
+function AdvancedNotify:Notify( main_color , header_text , main_text )
 
     local background = Color(24, 24, 24,245)
-    local type_color = type or Color(255, 0, 0)
-    local value = text_ or ""
+    local type_color = main_color or Color(255, 0, 0)
+    local value_head = header_text or ""
+    local value_text = main_text or ""
 
     self = vgui.Create("DPanel")
     self:SetPos(ScrW() * 0.74, ScrH() * 0.86)
