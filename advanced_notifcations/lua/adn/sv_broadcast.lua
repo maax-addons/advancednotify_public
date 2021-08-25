@@ -18,15 +18,10 @@
 
 util.AddNetworkString("AdvancedNotify.Broadcast")
 
-function AdvancedNotify:Broadcast(ply, type, header, text)
+function AdvancedNotify:Broadcast( ply , main_color, header_text, main_text)
     net.Start("AdvancedNotify.Broadcast")
-    net.WriteString(type or Color(255,0,0))
-    net.WriteString(header or "AdvancedNotify")
-    net.WriteString(text or "No Text given...")
+    net.WriteString(main_color or Color(255,0,0))
+    net.WriteString(header_text or "AdvancedNotify")
+    net.WriteString(main_text or "No Text given...")
     net.Send(ply)
 end
-
-
-concommand.Add("hudpopup", function()
-  AdvancedNotify:Broadcast(Color(255,0,0),  "Advanced Notifications", "Some Text...")
-end)
