@@ -2,13 +2,12 @@
 //       Advanced Notifications       //
 //          Coded by: Maax            //
 //                                    //
-//      Version: v1.0 (Workshop)      //
+//      Version: v1.0 (GitHub)        //
 //                                    //
 //      You are not permitted to      //
 //        reupload this Script!       //
 //                                    //
 ////////////////////////////////////////
-
 --[[
   
   File: cl_notifications.lua
@@ -53,10 +52,4 @@ end
 
 net.Receive("AdvancedNotify.Notify", function(len)
     AdvancedNotify:Notify(net.ReadString(), net.ReadString(), net.ReadString())
-end)
-
-concommand.Add("notify_test", function()
-
-AdvancedNotify:Notify(Color(255,0,0), "Notification", "Some text...")
-
 end)
