@@ -1,5 +1,5 @@
-# Adcanced Notifications
-Adcanced Notifications for Garry´s Mod.
+# Advanced Notify - v1.0
+Advanced Notifications for Garry´s Mod.
 
 ## Support
 If you need help fell free to join my Support Discord Server.
