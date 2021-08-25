@@ -1,58 +1,49 @@
-function DigitalRP.SuccessPrint(...)
-	MsgC(Color(225, 20, 30), "[Digital Gaming Framework] ", Color(101, 190, 0), ..., "\n\r")
+////////////////////////////////////////
+//       Advanced Notifications       //
+//          Coded by: Maax            //
+//                                    //
+//      Version: v1.0 (GitHub)        //
+//                                    //
+//      You are not permitted to      //
+//        reupload this Script!       //
+//                                    //
+////////////////////////////////////////
+
+--[[
+  
+  File: cl_handler.lua
+
+]]--
+
+local function CheckVersion()
+
+
+	http.Fetch("https://development.digital-gaming.eu/addons/adn/version.txt",
+		
+		-- onSuccess function
+		function( body, length, headers, code )
+			-- The first argument is the HTML we asked for.
+			if body != AdvancedNotify.Verison then 
+                 AdvancedNotify.Print("Addon is up to date!")
+			else
+                 AdvancedNotify.Print("A new version of the addon is available! Please update this installation.")
+			end
+		end,
+
+		-- onFailure function
+		function( message )
+			-- We failed. =(
+			print( message )
+		end,
+
+		-- header example
+		{ 
+			["accept-encoding"] = "gzip, deflate",
+			["accept-language"] = "fr" 
+		}
+	)
+
 end
 
-function DigitalRP.NotifyNoPermisson()
-	DigitalRP:Notify(DigitalRP:GetColor("red"),DigitalRP:GetText("notification_nopermisson_header"),DigitalRP:GetText("notification_nopermisson_text"))
-end
 
-
-net.Receive("DigitalRP.Notification", function(len)
-    DigitalRP:Notify(net.ReadString(), net.ReadString(), net.ReadString())
-end)
-
-net.Receive("DigitalRP.ServerSideNotification", function(len)
-    DigitalRP:Notify(net.ReadString(), net.ReadString(), net.ReadString())
-end)
-
-net.Receive("DigitalRP.BankNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("blue"), "Bank", net.ReadString())
-end)
-
-net.Receive("DigitalRP.SewpUpgraderNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("red"), "SWEP Upgrader", net.ReadString())
-end)
-
-net.Receive("DigitalRP.DeathscreenNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("cyan"), "Deathscreens", net.ReadString())
-end)
-
-net.Receive("DigitalRP.CraftingNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("cyan"), "Crating-System", net.ReadString())
-end)
-
-net.Receive("DigitalRP.InventoryNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("blueDark"), "Inventar", net.ReadString())
-end)
-
-
-net.Receive("DigitalRP.DarkRPNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("red"), "PrisonRP", net.ReadString())
-end)
-
-net.Receive("DigitalRP.GangNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("yellow"), "Gang-System", net.ReadString())
-end)
-
-
-net.Receive("DigitalRP.ArmoryNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("cyan"), "Waffenschrank", net.ReadString())
-end)
-
-net.Receive("DigitalRP.AuctionNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("cyan"), "Auktions System", net.ReadString())
-end)
-
-net.Receive("DigitalRP.MarktplaceNotification", function(len)
-    DigitalRP:Notify(DigitalRP:GetColor("cyan"), "Marktplatz", net.ReadString())
-end)
+concommand.Add("checkup_version", CheckVersion())
