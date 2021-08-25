@@ -12,3 +12,9 @@ Link: https://discord.gg/TwqNCWkYUM
 ```javascript
   AdvancedNotify:Notify(color, header_text , content_text)
 ```
+
+### Hud PopUP
+
+```javascript
+  AdvancedNotify:Broadcast(color, header_text, main_text)
+```
