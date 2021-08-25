@@ -1,8 +1,9 @@
-function AdvancedNotify:Notify(type, header, text_)
+function AdvancedNotify:Notify(color, header_text , content_text)
 
     local background = Color(24, 24, 24,245)
-    local type_color = type or Color(255, 0, 0)
-    local value = text_ or ""
+    local type_color = color or Color(255, 0, 0)
+    local value_head = header_text or ""
+    local value_text = content_text or ""
 
     self = vgui.Create("DPanel")
     self:SetPos(ScrW() * 0.74, ScrH() * 0.86)
@@ -14,13 +15,13 @@ function AdvancedNotify:Notify(type, header, text_)
     function self:Paint(w, h)
             draw.RoundedBox(6, 0, 0, w, h, background)
             draw.RoundedBoxEx(0, 0, 0, w, 7, type_color, true, true, false, false)
-            draw.DrawText(header, "mlib.default_x", w * .01, h * .01 + 4, type_color, TEXT_ALIGN_LEFT)
+            draw.DrawText(header_text, "mlib.default_x", w * .01, h * .01 + 4, type_color, TEXT_ALIGN_LEFT)
     end
 
     self.richtext = vgui.Create("RichText", self)
     self.richtext:Dock(FILL)
     self.richtext:DockMargin(2,35,10,10)
-    self.richtext:AppendText(value)
+    self.richtext:AppendText(value_text)
     self.richtext:SetVerticalScrollbarEnabled(false)
     function self.richtext:PerformLayout()
         self:SetFontInternal("mlib.default")
