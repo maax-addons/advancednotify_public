@@ -4,7 +4,11 @@ surface.CreateFont("DigitalRP.HUDPopUPText", {
 	width = 150
 })
 
-function DigitalRP:Broadcast(type, header, text_)
+function AdvancedNotify:Broadcast(color, header_text, main_text)
+	
+    local value_color = color or Color(255,0,0)
+    local value_header = header_text or ""
+    local value_text = main_text or ""
 
     self = vgui.Create("DNotify")
     self:SetPos(ScrW()/4.0, ScrH() /6.1)
@@ -29,9 +33,4 @@ end
 
 
 
-
-
-concommand.Add("hudpopup", function()
-  AdvancedNotify:Broadcast(DigitalRP:GetColor("orange"),  "Advanced Notifications", "Some Text...")
-end)
 
