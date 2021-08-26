@@ -1,4 +1,4 @@
-# Advanced Notify - v1.0
+# Advanced Notify - v1.1
 Advanced Notifications for Garry´s Mod.
 
 ## Support
